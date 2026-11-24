@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeLab — Aprenda fazendo</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2d;--panel2:#172238;--line:#263550;--text:#edf3ff;--muted:#9aabc6;--green:#48e0a4;--blue:#68a7ff;--red:#ff7373}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#14284a 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.55 system-ui,Arial}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 6%;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0b1020ed;backdrop-filter:blur(10px);z-index:5}
+.logo{font-weight:800;font-size:21px;letter-spacing:.3px}.logo span{color:var(--green)}nav a{color:var(--muted);text-decoration:none;margin-left:20px}nav a:hover{color:var(--green)}
+main{max-width:1100px;margin:auto;padding:34px 20px 70px}.hero{padding:38px 0 28px}.eyebrow{color:var(--green);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(32px,6vw,54px);line-height:1.08;margin:12px 0}.hero p{color:var(--muted);max-width:650px;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.stat,.card,.workspace{background:linear-gradient(145deg,var(--panel),#10182a);border:1px solid var(--line);border-radius:16px;padding:18px}.stat strong{display:block;font-size:24px}.stat small{color:var(--muted)}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:34px 0 14px}.section-title h2{margin:0;font-size:22px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{transition:.2s}.card:hover{border-color:#45658c;transform:translateY(-2px)}.tag{display:inline-block;color:var(--green);background:#15372f;padding:4px 9px;border-radius:20px;font-size:11px;font-weight:700}.card h3{margin:12px 0 5px}.card p{color:var(--muted);margin:0 0 15px}.btn{border:0;border-radius:9px;padding:10px 15px;background:var(--green);color:#071b16;font-weight:800;cursor:pointer}.btn.secondary{background:#223550;color:var(--text);border:1px solid #344a6b}.btn:active{transform:scale(.98)}
+.workspace{margin-top:16px}.workspace-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}.workspace h2{margin:0}.editor{width:100%;min-height:145px;resize:vertical;background:#080e1b;color:#d8e7ff;border:1px solid #2a3b58;border-radius:10px;padding:14px;font:14px/1.6 ui-monospace,monospace;margin:12px 0}.output{background:#080e1b;border:1px solid #263550;border-radius:10px;padding:14px;min-height:58px;color:#b9f5d9;white-space:pre-wrap;font:13px/1.5 ui-monospace,monospace}
+.challenge{display:none;margin-top:14px}.challenge.active{display:block}.question{font-weight:700;margin:12px 0}.options{display:grid;gap:8px}.option{text-align:left;padding:12px;background:#0c1424;color:var(--text);border:1px solid var(--line);border-radius:9px;cursor:pointer}.option:hover{border-color:var(--blue)}.feedback{margin-top:12px;color:var(--muted);min-height:25px}
+footer{border-top:1px solid var(--line);padding:22px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:650px){nav{display:none}.stats{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.hero{padding-top:25px}}
+</style>
+</head>
+<body>
+<header><div class="logo">Code<span>Lab</span>_</div><nav><a href="#trilhas">Trilhas</a><a href="#pratica">Prática</a><a href="#desafios">Desafios</a></nav></header>
+<main>
+<section class="hero">
+<div class="eyebrow">Aprendizado prático • nível iniciante</div>
+<h1>Aprenda tecnologia.<br><span style="color:var(--green)">Construa habilidades.</span></h1>
+<p>Um espaço para praticar Python, desenvolver raciocínio lógico e entender como aplicações lidam com dados e segurança.</p>
+</section>
+<section class="stats">
+<div class="stat"><strong id="points">0 XP</strong><small>Pontos conquistados</small></div>
+<div class="stat"><strong id="done">0</strong><small>Desafios concluídos</small></div>
+<div class="stat"><strong>Iniciante</strong><small>Seu nível atual</small></div>
+</section>
+<div class="section-title" id="trilhas"><h2>Suas trilhas</h2><span class="tag">3 módulos</span></div>
+<section class="grid">
+<article class="card"><span class="tag">MÓDULO 01</span><h3>Fundamentos de Python</h3><p>Variáveis, condições, laços e funções com exemplos simples.</p><button class="btn secondary" onclick="goPractice()">Começar</button></article>
+<article class="card"><span class="tag">MÓDULO 02</span><h3>Lógica e algoritmos</h3><p>Resolva problemas passo a passo e melhore seu raciocínio.</p><button class="btn secondary" onclick="openChallenge(0)">Praticar</button></article>
+<article class="card"><span class="tag">MÓDULO 03</span><h3>Segurança de aplicações</h3><p>Aprenda validação de dados e conceitos de segurança em cenários fictícios.</p><button class="btn secondary" onclick="openChallenge(1)">Praticar</button></article>
+<article class="card"><span class="tag">LABORATÓRIO</span><h3>Dados e validação</h3><p>Experimente entradas controladas e observe como um programa responde.</p><button class="btn secondary" onclick="openChallenge(2)">Abrir laboratório</button></article>
+</section>
+<section class="workspace" id="pratica">
+<div class="workspace-head"><h2>Área de prática Python</h2><span class="tag">Simulador básico</span></div>
+<p style="color:var(--muted)">Digite um comando simples. Este simulador reconhece alguns exemplos de Python; ele não executa código arbitrário.</p>
+<textarea class="editor" id="code" spellcheck="false">nome = "Mundo"
+print("Olá,", nome)</textarea>
+<button class="btn" onclick="runCode()">▶ Executar exemplo</button>
+<div class="section-title"><h2>Saída</h2><button class="btn secondary" onclick="clearOutput()">Limpar</button></div>
+<div class="output" id="output">A saída aparecerá aqui.</div>
+</section>
+<section class="workspace" id="desafios">
+<div class="workspace-head"><h2>Desafios rápidos</h2><span class="tag">+10 XP por acerto</span></div>
+<div class="challenge active" id="challenge0"><div class="tag">LÓGICA</div><div class="question">Qual estrutura Python é usada para repetir um bloco enquanto uma condição for verdadeira?</div><div class="options"><button class="option" onclick="answer(0,0)">if</button><button class="option" onclick="answer(0,1)">while</button><button class="option" onclick="answer(0,2)">def</button></div><div class="feedback" id="feedback0"></div></div>
+<div class="challenge" id="challenge1"><div class="tag">SEGURANÇA</div><div class="question">Um formulário recebe a idade digitada por alguém. Qual é uma boa prática antes de usar esse dado?</div><div class="options"><button class="option" onclick="answer(1,0)">Confiar em qualquer entrada</button><button class="option" onclick="answer(1,1)">Validar o tipo e a faixa permitida</button><button class="option" onclick="answer(1,2)">Exibir o dado para todos</button></div><div class="feedback" id="feedback1"></div></div>
+<div class="challenge" id="challenge2"><div class="tag">LABORATÓRIO</div><div class="question">Neste cenário fictício, o campo “nome” deve aceitar apenas letras e espaços. Qual entrada deve ser rejeitada?</div><div class="options"><button class="option" onclick="answer(2,0)">Ana Souza</button><button class="option" onclick="answer(2,1)">Carlos</button><button class="option" onclick="answer(2,2)">Ana123</button></div><div class="feedback" id="feedback2"></div></div>
+</section>
+</main>
+<footer>CodeLab © 2026 • Aprenda com responsabilidade e pratique apenas em ambientes autorizados.</footer>
+<script>
+let xp=0,completed=new Set();
+function update(){document.getElementById('points').textContent=xp+' XP';document.getElementById('done').textContent=completed.size}
+function goPractice(){document.getElementById('pratica').scrollIntoView({behavior:'smooth'})}
+function openChallenge(n){document.querySelectorAll('.challenge').forEach(x=>x.classList.remove('active'));document.getElementById('challenge'+n).classList.add('active');document.getElementById('desafios').scrollIntoView({behavior:'smooth'})}
+function answer(n,choice){let correct=[1,1,2][n],f=document.getElementById('feedback'+n);if(choice===correct){if(!completed.has(n)){completed.add(n);xp+=10;update()}f.textContent='Correto! +10 XP. Boa prática.';f.style.color='var(--green)'}else{f.textContent='Ainda não. Pense no objetivo da pergunta e tente novamente.';f.style.color='var(--red)'}}
+function runCode(){let s=document.getElementById('code').value,out=[];let vars={};try{s.split('\n').forEach(line=>{let m=line.match(/^\s*([A-Za-z_]\w*)\s*=\s*["']([^"']*)["']\s*$/);if(m){vars[m[1]]=m[2];return}let p=line.match(/^\s*print\((.*)\)\s*$/);if(p){let expr=p[1].trim();let pieces=expr.split(',').map(x=>{x=x.trim();if((x.startsWith('"')&&x.endsWith('"'))||(x.startsWith("'")&&x.endsWith("'")))return x.slice(1,-1);if(Object.prototype.hasOwnProperty.call(vars,x))return vars[x];if(/^-?\d+(\.\d+)?$/.test(x))return x;throw Error('Este simulador aceita apenas print com textos, números e variáveis simples.')});out.push(pieces.join(' '));return}if(line.trim()!=='')throw Error('Comando não reconhecido pelo simulador. Experimente atribuição de texto e print().')});document.getElementById('output').textContent=out.join('\n')||'Código processado.'}catch(e){document.getElementById('output').textContent='Aviso: '+e.message}}
+function clearOutput(){document.getElementById('output').textContent='A saída aparecerá aqui.'}
+update();
+</script>
+</body></html>
